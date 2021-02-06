@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+
+<script>
+    function computerPlay() {
+        // generate rock, paper or scissors randomly
+        let rndNumber = Math.floor(Math.random() * 3);
+        switch (rndNumber) {
+            case 0:
+                return("Rock");
+                break;
+            case 1:
+                return("Paper");
+                break;
+            case 2:
+                return("Scissors");
+                break;
+        }
+    }
+
+    function playRound(playerSelection,computerSelection) {
+        // play a single round
+        if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
+            return("You Draw! " + "Both players chose " + playerSelection); 
+        }
+
+        if (playerSelection.toUpperCase() === "ROCK") {
+            if (computerSelection === "Paper") {
+                return("You Lose! " + computerSelection + " beats " + playerSelection);
+            } else {
+                return("You Win! " + playerSelection + " beats " + computerSelection);
+            }
+        }
+
+        if (playerSelection.toUpperCase() === "PAPER") {
+            if (computerSelection === "Scissors") {
+                return("You Lose! " + computerSelection + " beats " + playerSelection);
+            } else {
+                return("You Win! " + playerSelection + " beats " + computerSelection);
+            }
+        }
+
+        if (playerSelection.toUpperCase() === "SCISSORS") {
+            if (computerSelection === "Rock") {
+                return("You Lose! " + computerSelection + " beats " + playerSelection);
+            } else {
+                return("You Win! " + playerSelection + " beats " + computerSelection);
+            }
+        }
+    }
+
+    function game() {
+        for (i = 0; i < 5; i++) {
+            let playerSelection = prompt("What do you choose?");
+            let computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+        }
+    }
+
+    game();
+</script>
+
+</body>
+</html>
